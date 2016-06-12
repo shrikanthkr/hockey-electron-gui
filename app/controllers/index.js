@@ -45,18 +45,20 @@ export default  ApplicationController.extend({
 	},
 	getCommandList: function(){
 		let types = [];
-		x.forEach(function(item, index){
+		this.selectedTypes.forEach(function(item, index){
 			switch(item.id){
 				case 0:
-					types.push('assembleStage');
-					break;
+				types.push('assembleStage');
+				break;
 				case 1:
-					types.push('assembleQA');
-					break;
+				types.push('assembleQA');
+				break;
 				case 2:
-					types.push('assembleRC');
-					break;
+				types.push('assembleRC');
+				break;
 			}
 		});
 		return types;
+	}
+
 });
