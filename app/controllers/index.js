@@ -5,6 +5,9 @@ export default  ApplicationController.extend({
 	path: "",
 	buildTypes: [{id: 0, name: "Stage"},{id: 1, name: "QA"},{id: 2, name: "RC"}],
 	selectedTypes: [],
+	stdOut: "",
+	stdErr: "",
+	stdEnd: "",
 	actions: {
 		save: function() {
 			let params = {};
@@ -13,15 +16,15 @@ export default  ApplicationController.extend({
 			let output = this.spawn("./gradlew",buildTypes, params);
 
 			output.stdout.on('data', (data) => {
-				console.log(`stdout: ${data}`);
+				this.set('stdOut', this.get('stdOut') + data);
 			});
 
 			output.stderr.on('data', (data) => {
-				console.log(`stderr: ${data}`);
+				this.set('stdErr', this.get('stdErr') + data);
 			});
 
 			output.on('close', (code) => {
-				console.log(`child process exited with code ${code}`);
+				this.set('stdEnd', "child process exited with code" + code);
 			});
 
 		},
