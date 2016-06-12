@@ -4,8 +4,9 @@ import ApplicationController from './application';
 export default  ApplicationController.extend({
 	actions: {
 		save: function() {
-			console.log(this.get('process'));
-			alert();
+			this.execute("ls", (error, stdout, stderr) => {
+				console.log(stdout);
+			});
 		}
 	}
 });
