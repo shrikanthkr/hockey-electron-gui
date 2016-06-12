@@ -3,11 +3,14 @@ import ApplicationController from './application';
 
 export default  ApplicationController.extend({
 	path: "",
+	buildTypes: [{id: 0, name: "Stage"},{id: 1, name: "QA"},{id: 2, name: "RC"}],
+	selectedTypes: [],
 	actions: {
 		save: function() {
 			let params = {};
 			params.cwd = this.get('path');
-			let output = this.spawn("./gradlew",['assembleStage'], params);
+			let buildTypes = this.getCommandList();
+			let output = this.spawn("./gradlew",buildTypes, params);
 
 			output.stdout.on('data', (data) => {
 				console.log(`stdout: ${data}`);
@@ -39,5 +42,21 @@ export default  ApplicationController.extend({
 				}
 			})
 		}
-	}
+	},
+	getCommandList: function(){
+		let types = [];
+		x.forEach(function(item, index){
+			switch(item.id){
+				case 0:
+					types.push('assembleStage');
+					break;
+				case 1:
+					types.push('assembleQA');
+					break;
+				case 2:
+					types.push('assembleRC');
+					break;
+			}
+		});
+		return types;
 });

@@ -8,3 +8,8 @@
 <div {{action "open"}}>Open</div>
 
 <div>{{path}}</div>
+
+{{multiselect-checkboxes
+    options=buildTypes
+    labelProperty='name'
+    selection=selectedTypes}}

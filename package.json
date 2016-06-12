@@ -43,7 +43,9 @@
     "ember-foundation": "0.7.2",
     "ember-inspector": "1.10.0",
     "ember-load-initializers": "^0.5.1",
+    "ember-multiselect-checkboxes": "0.9.1",
     "ember-resolver": "^2.0.3",
+    "ember-truth-helpers": "1.2.0",
     "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1"
   },
