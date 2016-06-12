@@ -27,6 +27,10 @@ export default  ApplicationController.extend({
 				this.set('stdEnd', "child process exited with code" + code);
 			});
 
+			output.on('error', (code) => {
+				this.set('stdEnd', "child process exited with code" + code);
+			});
+
 		},
 		clean: function() {
 			let params = {};
