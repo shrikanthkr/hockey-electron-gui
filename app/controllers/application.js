@@ -11,5 +11,8 @@ export default Ember.Controller.extend({
 	dialog: dialog,
 	execute: function(command, options, callback){
 		var output = this.child_process.exec(command,options, callback);
+	},
+	spawn :function(command, args, params) {
+		return this.child_process.spawn(command, args, params);
 	}
 });

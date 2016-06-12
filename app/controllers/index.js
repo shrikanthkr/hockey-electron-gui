@@ -7,11 +7,20 @@ export default  ApplicationController.extend({
 		save: function() {
 			let params = {};
 			params.cwd = this.get('path');
-			this.execute("./gradlew assembleRC", params, (error, stdout, stderr) => {
-				console.log(stdout);
-				console.log("ERROR:   " + error);
-				console.log("STDERR:"  + stderr);
+			let output = this.spawn("./gradlew",['assembleStage'], params);
+
+			output.stdout.on('data', (data) => {
+				console.log(`stdout: ${data}`);
 			});
+
+			output.stderr.on('data', (data) => {
+				console.log(`stderr: ${data}`);
+			});
+
+			output.on('close', (code) => {
+				console.log(`child process exited with code ${code}`);
+			});
+
 		},
 		clean: function() {
 			let params = {};
