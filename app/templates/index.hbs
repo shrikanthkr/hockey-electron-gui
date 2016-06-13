@@ -2,16 +2,14 @@
 
  <h1>Hello World!</h1>
 
-
+<div {{action "open"}}>Open</div>
 
 <div>{{path}}</div>
-
-{{multiselect-checkboxes
-    options=buildTypes
-    labelProperty='name'
-    selection=selectedTypes}}
-
+<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
 {{#each buildTypes as |type|}}
-  {{build-type type=type}}
+	<li>
+  	{{build-type type=type path=path}}
+  </li>
 {{/each}}
+</ul>
 
