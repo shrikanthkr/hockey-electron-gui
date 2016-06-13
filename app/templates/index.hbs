@@ -2,10 +2,7 @@
 
  <h1>Hello World!</h1>
 
-<div {{action "clean"}}>Clean</div> 
-<div {{action "save"}}>Save</div>
 
-<div {{action "open"}}>Open</div>
 
 <div>{{path}}</div>
 
@@ -14,10 +11,7 @@
     labelProperty='name'
     selection=selectedTypes}}
 
+{{#each buildTypes as |type|}}
+  {{build-type type=type}}
+{{/each}}
 
- <div class="console-output">{{stdOut}}</div>
- <hr>
- <div class="console-output">{{stdErr}}</div>
- <hr>
-  <div class="console-output">{{stdEnd}}</div>
- <hr>
