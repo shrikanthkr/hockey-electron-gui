@@ -43,7 +43,7 @@ export default Ember.Component.extend(ElectronMixin, {
 				type = 'assembleStage';
 				break;
 				case 1:
-				ttype = 'assembleQA';
+				type = 'assembleQA';
 				break;
 				case 2:
 				type = 'assembleRC';
