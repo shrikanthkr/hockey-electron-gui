@@ -23,6 +23,7 @@ export default Ember.Component.extend(ElectronMixin, {
 
 			output.on('close', (code) => {
 				this.set('stdEnd', "child process exited with code" + code);
+				this.set('is_loading', false);
 			});
 
 			output.on('error', (code) => {
