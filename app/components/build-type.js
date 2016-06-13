@@ -3,6 +3,7 @@ import ElectronMixin from '../mixins/electron'
 export default Ember.Component.extend(ElectronMixin, {
 	success: true,
 	is_loading: false,
+	pid: 0,
 	actions: {
 		build: function() {
 			this.set('is_loading', true);
@@ -10,9 +11,10 @@ export default Ember.Component.extend(ElectronMixin, {
 			let params = {};
 			params.cwd = this.get('path');
 			let id = this.get('type').id;
-			let buildTypes = this.getCommand(id);
+			let buildTypes = [];
+			buildTypes.push(this.getCommand(id));
 			let output = this.spawn("./gradlew",buildTypes, params);
-
+			this.set('pid', output.pid);
 			output.stdout.on('data', (data) => {
 				this.set('stdOut', data);
 			});
@@ -35,19 +37,19 @@ export default Ember.Component.extend(ElectronMixin, {
 		},
 	},
 	getCommand: function(id){
-		let types = [];
+		let type = "";
 			switch(id){
 				case 0:
-				types.push('assembleStage');
+				type = 'assembleStage';
 				break;
 				case 1:
-				types.push('assembleQA');
+				ttype = 'assembleQA';
 				break;
 				case 2:
-				types.push('assembleRC');
+				type = 'assembleRC';
 				break;
 			}
-		return types;
+		return type;
 	}
 
 });
