@@ -1,12 +1,29 @@
 @import "settings";
 @import 'foundation';
 @include foundation-everything;
-
+@import "loader";
 
 
 
 .console-output{
-  height: 100px;
-  overflow-y: scroll;
-  max-height: 100px;  
+	height: 100px;
+	overflow-y: scroll;
+	max-height: 100px;  
+}
+
+.isa_info, .isa_success, .isa_warning, .isa_error {
+	margin: 10px 0px;
+	padding:12px;
+}
+.info {
+	color: #00529B;
+}
+.success {
+	color: #4F8A10;
+}
+.warning {
+	color: #9F6000;
+}
+.error {
+	color: #D8000C;
 }

@@ -1,15 +1,19 @@
 {{yield}}
-<h1>{{type.name}}</h1>
-<div {{action "clean"}}>Clean</div> 
-<div {{action "save"}}>Save</div>
+<h3>{{type.name}}</h3>
+{{#if is_loading}}
+<button class='disabled button' >Building...</button>
+{{else}}
+<button class='success button'  {{action "build"}}>Build</button>
+{{/if}}
 
 
 
 
 
- <div class="console-output">{{stdOut}}</div>
+
+ <div class='{{if success "success" "error"}} console-output'>{{stdOut}}</div>
  <hr>
- <div class="console-output">{{stdErr}}</div>
+ <div class='{{if success "success" "error"}} console-output'>{{stdErr}}</div>
  <hr>
-  <div class="console-output">{{stdEnd}}</div>
+  <div class='{{if success "success" "error"}} console-output'>{{stdEnd}}</div>
  <hr>

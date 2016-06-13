@@ -1,9 +1,12 @@
 import Ember from 'ember';
 import ElectronMixin from '../mixins/electron'
 export default Ember.Component.extend(ElectronMixin, {
-
+	success: true,
+	is_loading: false,
 	actions: {
-		save: function() {
+		build: function() {
+			this.set('is_loading', true);
+			this.set('success', true);
 			let params = {};
 			params.cwd = this.get('path');
 			let id = this.get('type').id;
@@ -24,18 +27,11 @@ export default Ember.Component.extend(ElectronMixin, {
 
 			output.on('error', (code) => {
 				this.set('stdEnd', "child process exited with code" + code);
+				this.set('success', (code === 0) );
+				this.set('is_loading', false);
 			});
 
 		},
-		clean: function() {
-			let params = {};
-			params.cwd = this.get('path');
-			this.execute("./gradlew clean", params, (error, stdout, stderr) => {
-				console.log(stdout);
-				console.log("ERROR:   " + error);
-				console.log("STDERR:"  + stderr);
-			});
-		}
 	},
 	getCommand: function(id){
 		let types = [];
