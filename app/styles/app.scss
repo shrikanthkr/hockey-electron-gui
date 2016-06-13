@@ -1,3 +1,10 @@
+@import "settings";
+@import 'foundation';
+@include foundation-everything;
+
+
+
+
 .console-output{
   height: 100px;
   overflow-y: scroll;
