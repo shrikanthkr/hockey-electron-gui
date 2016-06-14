@@ -10,9 +10,9 @@ export default Ember.Component.extend(ElectronMixin, {
 			this.set('success', true);
 			let params = {};
 			params.cwd = this.get('path');
-			let id = this.get('type').id;
+			let command = this.get('type').command;
 			let buildTypes = [];
-			buildTypes.push(this.getCommand(id));
+			buildTypes.push(command);
 			let output = this.spawn("./gradlew",buildTypes, params);
 			this.set('pid', output.pid);
 			output.stdout.on('data', (data) => {

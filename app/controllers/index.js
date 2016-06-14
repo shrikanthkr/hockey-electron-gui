@@ -5,13 +5,18 @@ export default  ApplicationController.extend(ElectronMixin, {
 	path: "",
 	success: true,
 	cleaning: false,
-	buildTypes: [{id: 0, name: "Stage"},{id: 1, name: "QA"},{id: 2, name: "RC"}],
+	buildTypes: [],
 	actions: {
 		open: function() {
 			this.get('dialog').showOpenDialog({properties: ['openDirectory']}, (paths) => {
 				if(paths){
 					this.set('path', paths[0]);
-					console.log(paths);
+					let params = {};
+					params.cwd = this.get('path');
+					//
+					this.execute('./gradlew tasks', params,(error, stdout, stderr) => {
+						this.parseTask(stdout)
+					})
 				}
 			})
 		},
@@ -28,6 +33,18 @@ export default  ApplicationController.extend(ElectronMixin, {
 					this.set('stdout', stdout);
 				}
 				this.set('cleaning', false);
+			});
+		}
+	},
+	parseTask(tasks) {
+		let prefix = 'assemble';
+		let pattern = /assemble(Release|Stage|Qa)/ig;
+		let arr = tasks.match(pattern);
+		if(arr){
+			arr.forEach((item, index) => {
+				let name = item.slice(prefix.length);
+				let buildType = {id: index, name: name, command: item}
+				this.get('buildTypes').pushObject(buildType);
 			});
 		}
 	}
