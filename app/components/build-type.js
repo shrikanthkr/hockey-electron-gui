@@ -35,21 +35,6 @@ export default Ember.Component.extend(ElectronMixin, {
 			});
 
 		},
-	},
-	getCommand: function(id){
-		let type = "";
-			switch(id){
-				case 0:
-				type = 'assembleStage';
-				break;
-				case 1:
-				type = 'assembleQA';
-				break;
-				case 2:
-				type = 'assembleRC';
-				break;
-			}
-		return type;
 	}
 
 });
