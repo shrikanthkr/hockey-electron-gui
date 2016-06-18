@@ -38,7 +38,7 @@ export default  ApplicationController.extend(ElectronMixin, {
 	},
 	parseTask(tasks) {
 		let prefix = 'assemble';
-		let pattern = /assemble(RC|Stage|Qa)/ig;
+		let pattern = /assemble(RC|Stage|Qa|Release|Debug)/ig;
 		let arr = tasks.match(pattern);
 		if(arr){
 			arr.forEach((item, index) => {
