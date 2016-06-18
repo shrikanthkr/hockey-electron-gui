@@ -1,7 +1,7 @@
 {{outlet}}
 
  <h4>This program will help you to generate builds!</h4>
-
+	<button {{action 'logout'}} class='button warning'>Logout</button>
 {{#if path}}
 {{else}}
 <div class='secondary button' {{action "open"}}>Select Project folder</div>

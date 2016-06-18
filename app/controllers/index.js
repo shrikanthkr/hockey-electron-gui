@@ -7,7 +7,7 @@ export default  ApplicationController.extend(ElectronMixin, {
 	cleaning: false,
 	buildTypes: [],
 	actions: {
-		open: function() {
+		open() {
 			this.get('dialog').showOpenDialog({properties: ['openDirectory']}, (paths) => {
 				if(paths){
 					this.set('path', paths[0]);
@@ -20,7 +20,7 @@ export default  ApplicationController.extend(ElectronMixin, {
 				}
 			})
 		},
-		clean: function() {
+		clean() {
 			let params = {};
 			params.cwd = this.get('path');
 			this.set('cleaning', true);
