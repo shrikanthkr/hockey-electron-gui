@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	application: Ember.inject.controller('application'),
 	reset(){
 
 	},
 	actions: {
-		login(response){
+		login(){
 			let user = this.get('model');
 			user.login().then((result) => {
 				user.setProperties({
@@ -14,7 +15,7 @@ export default Ember.Controller.extend({
 					gravatar_hash: result.gravatar_hash,
 					password: null
 				});
-				result.tokens.forEach((item,index) => {
+				result.tokens.forEach((item) => {
 					let token  = this.store.createRecord('token');
 					token.setProperties({
 						token: item.token,
@@ -22,13 +23,14 @@ export default Ember.Controller.extend({
 						name: item.name,
 						rights: item.rights});
 
-						user.get('tokens').pushObject(token);
+					user.get('tokens').pushObject(token);
 				});
 				user.save().then((savedUser) => {
 					savedUser.get('tokens').invoke('save');
+					this.setProperties('currentUser', user);
+					this.get('application').set('currentUser', savedUser);
 					this.transitionToRoute('/index');
 				});
-				
 				console.log(result);
 			});
 		}

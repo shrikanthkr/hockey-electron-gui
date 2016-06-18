@@ -12,7 +12,8 @@ export default Ember.Route.extend({
 				users.forEach((user, item) => {
 					console.log(user.get('email'));
 					user.deleteRecord();
-					user.save()
+					user.save();
+					window.localStorage.clear()
 				});
 			});
 			this.transitionTo('/');
