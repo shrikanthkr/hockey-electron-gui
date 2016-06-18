@@ -1,19 +1,18 @@
 {{yield}}
 <h3>{{type.name}}</h3>
+
 {{#if is_loading}}
 <button class='disabled button' >Building...</button>
 {{else}}
-<button class='success button'  {{action "build"}}>Build</button>
+	{{#if success}}
+		<button class='button' {{action 'upload'}}>Upload</button>
+	{{else}}
+		<button class='success button'  {{action "build"}}>Build</button>
+	{{/if}}
 {{/if}}
 
-
-
-
-
-
- <div class='{{if success "success" "error"}} console-output'>{{stdOut}}</div>
+<div class='{{if error "error" "success"}} console-output'>{{stdOut}}</div>
  <hr>
- <div class='{{if success "success" "error"}} console-output'>{{stdErr}}</div>
+ <div class='{{if error "error" "success"}} console-output'>{{stdErr}}</div>
  <hr>
-  <div class='{{if success "success" "error"}} console-output'>{{stdEnd}}</div>
- <hr>
+  <div class='{{if error "error" "success"}} console-output'>{{stdEnd}}</div>

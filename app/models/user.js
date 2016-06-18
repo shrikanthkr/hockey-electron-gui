@@ -17,7 +17,7 @@ export default Model.extend({
 	},
 	getApps() {
 		return $.ajax({
-			url: 'https://rink.hockeyapp.net/api/2/apps',
+			url: 'https://rink.hockeyapp.net/api/2/apps'
 		});
 	}
 });
