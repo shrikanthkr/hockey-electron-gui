@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import ApplicationController from './application';
 import ElectronMixin from '../mixins/electron'
-export default  ApplicationController.extend(ElectronMixin, {
+export default  Ember.Controller.extend(ElectronMixin, {
+	application: Ember.inject.controller('application'),
 	path: "",
 	success: true,
 	cleaning: false,

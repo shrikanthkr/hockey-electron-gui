@@ -2,9 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	application: Ember.inject.controller('application'),
-	reset(){
-
-	},
 	actions: {
 		login(){
 			let user = this.get('model');

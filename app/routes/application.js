@@ -10,12 +10,11 @@ export default Ember.Route.extend({
 					this.controllerFor('application').set('currentUser', user);
 					this.transitionTo('/index');
 					loggedIn = true;
-					return;
+				}
+				if(loggedIn == false){
+					this.transitionTo('/');
 				}
 			});
-			if(loggedIn == false){
-				this.transitionTo('/');
-			}
 		});
 	}
 });
