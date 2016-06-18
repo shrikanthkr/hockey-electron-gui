@@ -14,5 +14,10 @@ export default Model.extend({
 			url: 'https://rink.hockeyapp.net/api/2/auth_tokens',
 			headers: {"Authorization":  "Basic " + btoa(this.get('email')+ ":" + this.get('password'))}
 		});
+	},
+	getApps() {
+		return $.ajax({
+			url: 'https://rink.hockeyapp.net/api/2/apps',
+		});
 	}
 });

@@ -6,7 +6,7 @@ export default Ember.Route.extend({
 			this.set('user', this.controllerFor('application').get('currentUser'));
 	},
 	model() {
-		return ;
+		return this.get('user').getApps();
 	},
 	setupController(controller, model) {
 			controller.set('user', this.get('user'));
@@ -19,7 +19,7 @@ export default Ember.Route.extend({
 					user.deleteRecord();
 					user.save();
 					window.localStorage.clear()
-					this.controllerFor('application').setupAjax(null);
+					this.controllerFor('application').setupAjax();
 				});
 			});
 			this.transitionTo('/');

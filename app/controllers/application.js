@@ -4,22 +4,28 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	currentUser: null,
-	token: null,
+	token: window.localStorage.getItem('auth_token'),
 	tokenChanged: function(){
-		let user = this.get('currentUser');
-		user.get('tokens').then((tokens) => {
-			tokens.forEach((token, index) => {
-				if(token.get('rights') == 0){
-					this.setupAjax(token.get('token'));
-					this.set('token', token.get('token'));
-				}
-			});
-		});
+		this.setToken();
 	}.observes('currentUser'),
-	setupAjax(token) {
+	setToken(){
+		let user = this.get('currentUser');
+			user.get('tokens').then((tokens) => {
+				tokens.forEach((token, index) => {
+					if(token.get('rights') == 0){
+						this.set('token',token.get('token'));
+						window.localStorage.setItem('auth_token',  token.get('token'));
+					}
+				});
+		});
+	},
+	init() {
+		this.setupAjax();
+	},
+	setupAjax() {
 		$.ajaxSetup({
 			headers: {
-				'X-HockeyAppToken': token
+				'X-HockeyAppToken': this.get('token')
 			}
 		});
 	}
