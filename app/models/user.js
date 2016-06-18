@@ -8,15 +8,11 @@ export default Model.extend({
 	password: attr(),
 	gravatar_hash: attr(),
 	name: attr(),
-	tokens: [],
+	tokens: hasMany('token'),
 	login() {
 		return $.ajax({
-			method: 'post',
 			url: 'https://rink.hockeyapp.net/api/2/auth_tokens',
-			headers: {"Authorization":  "Basic " + btoa(this.get('email')+ ":" + this.get('password'))},
-			data: {
-				rights: '2'
-			}
+			headers: {"Authorization":  "Basic " + btoa(this.get('email')+ ":" + this.get('password'))}
 		});
 	}
 });

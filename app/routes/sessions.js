@@ -4,9 +4,4 @@ export default Ember.Route.extend({
 	model(){
 		return this.store.createRecord('user');
 	},
-	actions: {
-		to_index(){
-			this.transitionTo('/index');
-		}
-	}
 });

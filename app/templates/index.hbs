@@ -1,5 +1,6 @@
 {{outlet}}
  <h4>Welcome {{model.name}}</h4>
+ {{gravatar-image class='img-circle' email=model.email hash=mode.gravatar_hash  title=model.name}}
 	<button {{action 'logout'}} class='button warning'>Logout</button>
 {{#if path}}
 {{else}}

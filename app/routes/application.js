@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	
 	model(){
 		this.store.findAll('user').then((users)=>{
 			let loggedIn = false;

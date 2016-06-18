@@ -3,9 +3,8 @@ import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
-	builds: hasMany('build'),
-	title: attr(),
-	platform: attr(),
-	company: attr(),
-	role: attr()
+	token: attr(),
+	app_id: attr(),
+	app_id: attr(),
+	rights: attr()
 });

@@ -6,7 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login', { path: '/' });
+  this.route('sessions', { path: '/' });
   this.route('index', { path: '/index' });
 });
 
