@@ -5,6 +5,7 @@ export default Ember.Component.extend(ElectronMixin, {
 	error: false,
 	is_loading: false,
 	prefix: 'assemble',
+	staticUrl: 'https://rink.hockeyapp.net/api/2/apps/upload',
 	pid: 0,
 	actions: {
 		build: function() {
@@ -43,20 +44,26 @@ export default Ember.Component.extend(ElectronMixin, {
 			this.get('dialog').showOpenDialog({properties: ['openFile']}, (paths) => {
 				if(paths){
 					let filePath = paths[0];
+					var file = new File([filePath], filePath);
 					console.log(filePath);
+					var data = new FormData();
+					data.append("ipa", filePath);
 					$.ajax({
-						url: 'https://rink.hockeyapp.net/api/2/apps/upload',
-						method: 'post',
+						url: '',
+						type: 'POST',
 						contentType: 'multipart/form-data',
-						data:{
-							ipa: filePath
-						}
+						processData: false, // Don't process the files
+						data:data
 					}).then(()=>{}, (error) => {
 						console.log(error)
 					});
 				}
 			})
-		}
-	}
+		},
 
+		sendingFileEvent: Ember.computed(function(file, xhr, formData) {
+				console.log(file);
+				alert();
+		}),
+	}
 });
