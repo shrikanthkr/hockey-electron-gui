@@ -40,30 +40,6 @@ export default Ember.Component.extend(ElectronMixin, {
 			});
 
 		},
-		upload() {
-			this.get('dialog').showOpenDialog({properties: ['openFile']}, (paths) => {
-				if(paths){
-					let filePath = paths[0];
-					var file = new File([filePath], filePath);
-					console.log(filePath);
-					var data = new FormData();
-					data.append("ipa", filePath);
-					$.ajax({
-						url: '',
-						type: 'POST',
-						contentType: 'multipart/form-data',
-						processData: false, // Don't process the files
-						data:data
-					}).then(()=>{}, (error) => {
-						console.log(error)
-					});
-				}
-			})
-		},
 
-		sendingFileEvent: Ember.computed(function(file, xhr, formData) {
-				console.log(file);
-				alert();
-		}),
 	}
 });
