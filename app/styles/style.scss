@@ -1,0 +1,20 @@
+body {
+  background: #f7f7f7;
+}
+
+.navbar {
+  background: linear-gradient(to right bottom, $lightgreen, $lightseagreen);
+  padding   : 10px 25px;
+}
+
+.navbar-brand {
+  color      : $white !important;
+  font-family: 'Cabin';
+  font-weight: 600;
+  font-size  : $font-large;
+}
+
+.well {
+  background   : $white;
+  border-radius: 0;
+}
