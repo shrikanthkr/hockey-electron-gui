@@ -1,40 +1,43 @@
-@import "settings";
-@import 'foundation';
-@include foundation-everything;
-@import "loader";
+@import 'bower_components/bootstrap-sass/assets/stylesheets/_bootstrap';
 
-
-
-.console-output{
-	height: 100px;
+.console-output {
+	height    : 100px;
 	overflow-y: scroll;
-	max-height: 100px;  
+	max-height: 100px;
 }
 
-.isa_info, .isa_success, .isa_warning, .isa_error {
-	margin: 10px 0px;
-	padding:12px;
+.isa_error,
+.isa_info,
+.isa_success,
+.isa_warning {
+	margin : 10px 0;
+	padding: 12px;
 }
+
 .info {
 	color: #00529B;
 }
+
 .success {
 	color: #4F8A10;
 }
+
 .warning {
 	color: #9F6000;
 }
+
 .error {
 	color: #D8000C;
 }
 
 .img-circle {
-    border-radius: 50%;
+	border-radius: 50%;
 }
-.login-form{
-	-webkit-box-shadow: 0px 0px 7px 0px rgba(245,229,223,1);
-	-moz-box-shadow: 0px 0px 7px 0px rgba(245,229,223,1);
-	box-shadow: 0px 0px 7px 0px rgba(245,229,223,1);
-	padding:20px;
-	background-color:#f2f2f2;
+
+.login-form {
+	-webkit-box-shadow: 0 0 7px 0 rgba(245,229,223,1);
+	-moz-box-shadow   : 0 0 7px 0 rgba(245,229,223,1);
+	box-shadow        : 0 0 7px 0 rgba(245,229,223,1);
+	padding           : 20px;
+	background-color  : #f2f2f2;
 }
