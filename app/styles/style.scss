@@ -1,15 +1,17 @@
 body {
-  background: #f7f7f7;
+  background : $bg-color;
+  font-family: $roboto-font;
+  padding-top: 125px;
 }
 
 .navbar {
   background: linear-gradient(to right bottom, $lightgreen, $lightseagreen);
-  padding   : 10px 25px;
+  padding   : 10px 50px;
 }
 
 .navbar-brand {
   color      : $white !important;
-  font-family: 'Cabin';
+  font-family: $title-font;
   font-weight: 600;
   font-size  : $font-large;
 }
