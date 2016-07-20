@@ -4,8 +4,17 @@ body {
   padding-top: 125px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $title-font;
+}
+
 .navbar {
-  background: linear-gradient(to right bottom, $lightgreen, $lightseagreen);
+  background: $navbar-color;
   padding   : 10px 50px;
 }
 
@@ -18,5 +27,59 @@ body {
 
 .well {
   background   : $white;
-  border-radius: 0;
+  border-radius: $border-radius;
+  border       : 1px solid $border-color;
+  box-shadow   : none;
+}
+
+.btn {
+  border-radius: $border-radius;
+}
+
+.btn-success {
+  background: $btn-color;
+  border    : 1px solid #019c70;
+
+  &:active {
+    background: $btn-active-color;
+  }
+}
+
+.underlined {
+  text-align: center;
+}
+
+.underlined:after {
+  content   : '';
+  background: rgba(0,0,0,0.25);
+  height    : 1px;
+  width     : 25px;
+  display   : block;
+  margin    : 10px auto;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+input {
+  border       : 1px solid $lightgreen !important;
+  box-shadow   : none !important;
+  border-radius: $border-radius !important;
+
+  &:focus {
+    border: 1px solid #66afe9 !important;
+  }
+}
+
+#login-form {
+  margin-top: 50px;
+
+  form {
+    padding: 15px 0;
+  }
+
+  .btn-success {
+    padding: 7px 20px;
+  }
 }

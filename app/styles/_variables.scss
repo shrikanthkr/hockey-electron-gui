@@ -1,8 +1,13 @@
-$white        : #fff;
-$lightgreen   : #74d89a;
-$lightseagreen: #27a5a8;
-$bg-color     : #f7f7f7;
+$white           : #fff;
+$lightgreen      : #74d89a;
+$lightseagreen   : #27a5a8;
+$bg-color        : #f7f7f7;
+$navbar-color    : linear-gradient(to right bottom, $lightgreen, $lightseagreen);
+$btn-color       : linear-gradient(to top left, $lightgreen, $lightseagreen);
+$btn-active-color: linear-gradient(to bottom right, $lightgreen, $lightseagreen);
+$border-radius   : 2px;
+$border-color    : #ccc;
 
-$title-font   : 'Cabin', sans-serif;
-$roboto-font  : 'Roboto', sans-serif;
-$font-large   : 2.25rem;
+$title-font      : 'Cabin', sans-serif;
+$roboto-font     : 'Roboto', sans-serif;
+$font-large      : 2.25rem;
