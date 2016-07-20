@@ -8,12 +8,15 @@
         </div>
         {{#if path}}
         {{else}}
-          <a class='btn btn-primary' {{action "open"}}>Select Project folder</a>
+          <a class='btn btn-primary' {{action "open"}}>
+            <i class="icon-folder-open"></i> Select Project folder
+          </a>
         {{/if}}
         {{#if cleaning}}
           <div class='button disabled'>Cleaning...</div>
         {{else}}
-          <a class='btn btn-default' {{action "clean"}}>Clean</a>
+          <a class='btn btn-default' {{action "clean"}}>
+            <i class="icon-ccw"></i> Clean</a>
         {{/if}}
         <div style='paddding:20px' class='warning'>{{path}}</div>
         <button id="logout" {{action 'logout'}} class='btn btn-default'>Logout</button>

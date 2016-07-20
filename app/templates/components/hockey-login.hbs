@@ -7,13 +7,15 @@
 					<div class="well">
 						<h3 class="underlined">Login</h3>
 						<form>
-							<div class="form-group">
+							<div class="form-group has-feedback">
 								<label for="email">Email</label>
 								{{input type="email" value=user.email placeholder="user@example.com" autocomplete="on" class="form-control"}}
+								<i class="form-control-feedback icon-mail-alt"></i>
 							</div>
-							<div class="form-group">
+							<div class="form-group has-feedback">
 								<label for="password">Password</label>
 								{{input type="password" value=user.password placeholder="********" class="form-control"}}
+								<i class="form-control-feedback icon-lock"></i>
 							</div>
 							<div class="form-group">
 								<a {{action 'login'}} class="btn btn-success btn-block">Login to Hockey</a>
