@@ -2,11 +2,9 @@
   <div class="col-sm-3 left-fixed">
     <div class="row">
       <div class="col-sm-12">
-        <div class="text-center">
+        <div class="profile">
           {{gravatar-image class='avatar' email=user.email hash=mode.gravatar_hash title=user.name}}
-        </div>
-        <div class="text-center">
-          <h4><b>{{user.name}}</b></h4>
+          <h4 id="name">{{user.name}}</h4>
         </div>
         {{#if path}}
         {{else}}
@@ -18,7 +16,7 @@
           <a class='btn btn-default' {{action "clean"}}>Clean</a>
         {{/if}}
         <div style='paddding:20px' class='warning'>{{path}}</div>
-        <button {{action 'logout'}} class='button warning'>Logout</button>
+        <button id="logout" {{action 'logout'}} class='btn btn-default'>Logout</button>
       </div>
     </div>
   </div>

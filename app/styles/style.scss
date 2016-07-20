@@ -10,7 +10,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato';
+  font-family: $lato-font;
 }
 
 .navbar {
@@ -41,6 +41,8 @@ h6 {
 }
 
 .btn {
+  font-family  : $lato-font;
+  font-weight  : 600;
   border-radius: $border-radius;
 }
 
@@ -104,7 +106,9 @@ input {
   top         : 0;
   left        : 0;
   height      : 100%;
+  padding-top : 75px;
   border-right: 1px solid #f0f0f0;
+  background  : $sidebar-color;
 }
 
 .right-relative {
@@ -115,8 +119,27 @@ input {
   background: $white;
 }
 
-.avatar {
-  width        : 75px;
-  height       : 75px;
-  border-radius: 10rem;
+.profile {
+  @extend .text-center;
+
+  img.avatar {
+    width        : 75px;
+    height       : 75px;
+    border-radius: 10rem;
+    border       : 3px solid $white;
+  }
+
+  #name {
+    display   : block;
+    margin-top: 15px;
+    color     : $white;
+    font-size : $font-medium;
+  }
+}
+
+#logout {
+  position  : absolute;
+  top       : 0;
+  right     : 0;
+  margin-top: -75px;
 }
