@@ -1,46 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Cabin:600|Roboto';
+@import 'https://fonts.googleapis.com/css?family=Monoton|Lato|Roboto';
 @import 'bower_components/bootstrap-sass/assets/stylesheets/_bootstrap';
 @import '_variables';
 @import 'style';
-
-.console-output {
-	height    : 100px;
-	overflow-y: scroll;
-	max-height: 100px;
-}
-
-.isa_error,
-.isa_info,
-.isa_success,
-.isa_warning {
-	margin : 10px 0;
-	padding: 12px;
-}
-
-.info {
-	color: #00529B;
-}
-
-.success {
-	color: #4F8A10;
-}
-
-.warning {
-	color: #9F6000;
-}
-
-.error {
-	color: #D8000C;
-}
-
-.img-circle {
-	border-radius: 50%;
-}
-
-.login-form {
-	-webkit-box-shadow: 0 0 7px 0 rgba(245,229,223,1);
-	-moz-box-shadow   : 0 0 7px 0 rgba(245,229,223,1);
-	box-shadow        : 0 0 7px 0 rgba(245,229,223,1);
-	padding           : 20px;
-	background-color  : #f2f2f2;
-}

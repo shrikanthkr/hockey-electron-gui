@@ -1,13 +1,18 @@
 $white           : #fff;
 $lightgreen      : #74d89a;
-$lightseagreen   : #27a5a8;
+$darkgreen       : #27a5a8;
+$midgreen        : #27A896;
+$lightseagreen   : #27A86B;
 $bg-color        : #f7f7f7;
-$navbar-color    : linear-gradient(to right bottom, $lightgreen, $lightseagreen);
-$btn-color       : linear-gradient(to top left, $lightgreen, $lightseagreen);
-$btn-active-color: linear-gradient(to bottom right, $lightgreen, $lightseagreen);
+$bg-gradient     : linear-gradient(to right, $lightgreen, $midgreen);
+$navbar-color    : $white;
+$btn-color       : linear-gradient(to left, $midgreen, $lightseagreen);
+$btn-active-color: linear-gradient(to bottom right, $midgreen, $lightseagreen);
 $border-radius   : 2px;
 $border-color    : #ccc;
 
-$title-font      : 'Cabin', sans-serif;
+$title-font      : 'Monoton', cursive;
 $roboto-font     : 'Roboto', sans-serif;
-$font-large      : 2.25rem;
+$font-large      : 3.5rem;
+$font-vlarge     : 4.25rem;
+$font-medium     : 2rem;

@@ -1,7 +1,7 @@
 body {
   background : $bg-color;
   font-family: $roboto-font;
-  padding-top: 125px;
+  background : $bg-gradient;
 }
 
 h1,
@@ -10,19 +10,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $title-font;
+  font-family: 'Lato';
 }
 
 .navbar {
-  background: $navbar-color;
-  padding   : 10px 50px;
+  background   : $navbar-color;
+  padding      : 10px 50px;
+  border-radius: $border-radius;
+  border       : none;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .navbar-brand {
-  color      : $white !important;
-  font-family: $title-font;
-  font-weight: 600;
-  font-size  : $font-large;
+  color         : $lightseagreen !important;
+  font-family   : $title-font;
+  font-weight   : 600;
+  font-size     : $font-large;
+  letter-spacing: 5px;
+
+  small {
+    font-size: 2.75rem;
+  }
 }
 
 .well {
@@ -46,7 +54,8 @@ h6 {
 }
 
 .underlined {
-  text-align: center;
+  font-weight: bold;
+  text-align : center;
 }
 
 .underlined:after {
@@ -58,14 +67,12 @@ h6 {
   margin    : 10px auto;
 }
 
-.form-group {
-  margin-top: 20px;
-}
-
 input {
   border       : 1px solid $lightgreen !important;
   box-shadow   : none !important;
   border-radius: $border-radius !important;
+  padding      : 20px 10px !important;
+  height       : auto;
 
   &:focus {
     border: 1px solid #66afe9 !important;
@@ -73,13 +80,43 @@ input {
 }
 
 #login-form {
-  margin-top: 50px;
+  margin-top: 40%;
+
+  .title {
+    @extend .text-center;
+    color        : $white;
+    font-size    : $font-vlarge;
+    margin-bottom: 50px;
+    font-family  : $title-font;
+  }
 
   form {
     padding: 15px 0;
   }
 
   .btn-success {
-    padding: 7px 20px;
+    padding: 12px 20px;
   }
+}
+
+.left-fixed {
+  position    : fixed;
+  top         : 0;
+  left        : 0;
+  height      : 100%;
+  border-right: 1px solid #f0f0f0;
+}
+
+.right-relative {
+  position  : absolute;
+  top       : 0;
+  right     : 0;
+  height    : 100%;
+  background: $white;
+}
+
+.avatar {
+  width        : 75px;
+  height       : 75px;
+  border-radius: 10rem;
 }
