@@ -1,28 +1,46 @@
-{{outlet}}
- <h4>Welcome {{user.name}}</h4>
- {{gravatar-image class='img-circle' email=user.email hash=mode.gravatar_hash  title=user.name}}
-	<button {{action 'logout'}} class='button warning'>Logout</button>
-{{#if path}}
-{{else}}
-<div class='secondary button' {{action "open"}}>Select Project folder</div>
-{{/if}}
-{{#if cleaning}}
-  <div class='button disabled' >Cleaning...</div> 
-{{else}}
-  <div class='button' {{action "clean"}}>Clean</div> 
-{{/if}}
-
-
-<div style='paddding:20px' class='warning'>{{path}}</div>
-
-<div class='{{if success "success" "error"}} '>{{stdout}}</div>
 <div class="row">
-{{#each buildTypes as |type|}}
-	<div class='small-4 medium-4 large-4 columns'>
-  	{{build-type type=type path=path is_interrupted=is_interrupted}}
+  <div class="col-sm-3 left-fixed">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="text-center">
+          {{gravatar-image class='avatar' email=user.email hash=mode.gravatar_hash title=user.name}}
+        </div>
+        <div class="text-center">
+          <h4><b>{{user.name}}</b></h4>
+        </div>
+        {{#if path}}
+        {{else}}
+          <a class='btn btn-primary' {{action "open"}}>Select Project folder</a>
+        {{/if}}
+        {{#if cleaning}}
+          <div class='button disabled'>Cleaning...</div>
+        {{else}}
+          <a class='btn btn-default' {{action "clean"}}>Clean</a>
+        {{/if}}
+        <div style='paddding:20px' class='warning'>{{path}}</div>
+        <button {{action 'logout'}} class='button warning'>Logout</button>
+      </div>
+    </div>
   </div>
- {{else}}
- 	<h3>No Built types found</h3>
-{{/each}}
+  <div class="col-sm-9 right-relative">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          {{render 'shared/navbar'}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class='{{if success "success" "error"}} '>{{stdout}}</div>
+        {{#each buildTypes as |type|}}
+          <div class='small-4 medium-4 large-4 columns'>
+            {{build-type type=type path=path is_interrupted=is_interrupted}}
+          </div>
+          {{else}}
+            <h3>No Built types found</h3>
+        {{/each}}
+      </div>
+    </div>
+  </div>
 </div>
-
