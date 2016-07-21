@@ -137,9 +137,18 @@ input {
   }
 }
 
+i.form-control-feedback {
+  color: $icon-color;
+}
+
+.bottom-section {
+  position: fixed;
+  bottom  : 0;
+  width   : 100%;
+}
+
 #logout {
-  position  : absolute;
-  top       : 0;
-  right     : 0;
-  margin-top: -75px;
+  border    : 1px solid #404040;
+  color     : $white;
+  background: $sidebar-color;
 }
