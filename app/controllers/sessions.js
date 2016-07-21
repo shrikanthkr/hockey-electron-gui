@@ -26,7 +26,11 @@ export default Ember.Controller.extend({
 					savedUser.get('tokens').invoke('save');
 					this.setProperties('currentUser', user);
 					this.get('application').set('currentUser', savedUser);
-					this.transitionToRoute('/index');
+					this.get('application').setToken().then(() => {
+						this.transitionToRoute('/index');
+					}).catch((error) => {
+							alert()
+					});
 				});
 				console.log(result);
 			});
