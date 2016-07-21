@@ -9,14 +9,22 @@ export default Ember.Controller.extend({
 		this.setToken();
 	}.observes('currentUser'),
 	setToken(){
-		let user = this.get('currentUser');
+		return new Promise((resolve, reject) =>  {
+			let user = this.get('currentUser');
+			let isTokenAvailable = false;
 			user.get('tokens').then((tokens) => {
 				tokens.forEach((token, index) => {
 					if(token.get('rights') == 0){
 						this.set('token',token.get('token'));
 						window.localStorage.setItem('auth_token',  token.get('token'));
+						isTokenAvailable = true;
+						resolve(user);
 					}
 				});
+				if(!isTokenAvailable){
+						reject({message: 'Please create a token with full access'});
+					}
+			});
 		});
 	},
 	init() {
