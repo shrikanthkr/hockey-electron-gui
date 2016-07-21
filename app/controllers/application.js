@@ -19,6 +19,7 @@ export default Ember.Controller.extend({
 						window.localStorage.setItem('auth_token',  token.get('token'));
 						isTokenAvailable = true;
 						resolve(user);
+						retutn;
 					}
 				});
 				if(!isTokenAvailable){
