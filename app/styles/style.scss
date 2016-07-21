@@ -77,7 +77,7 @@ input {
   height       : auto;
 
   &:focus {
-    border: 1px solid #66afe9 !important;
+    border: 1px solid $primaryblue !important;
   }
 }
 
@@ -109,6 +109,24 @@ input {
   padding-top : 75px;
   border-right: 1px solid #f0f0f0;
   background  : $sidebar-color;
+
+  .btn {
+    background: transparent;
+    padding   : 10px 25px;
+    margin-top: 20px;
+  }
+
+  .btn-primary {
+    border: 2px solid $primaryblue;
+    color : $primaryblue;
+
+    &:focus,
+    &:hover {
+      border    : 2px solid $primaryblue;
+      color     : $white;
+      background: $primaryblue;
+    }
+  }
 }
 
 .right-relative {
@@ -121,6 +139,7 @@ input {
 
 .profile {
   @extend .text-center;
+  margin-bottom: 150px;
 
   img.avatar {
     width        : 75px;
@@ -141,14 +160,15 @@ i.form-control-feedback {
   color: $icon-color;
 }
 
-.bottom-section {
-  position: fixed;
-  bottom  : 0;
-  width   : 100%;
-}
-
 #logout {
   border    : 1px solid #404040;
-  color     : $white;
-  background: $sidebar-color;
+  color     : #505050;
+  margin-top: 7px;
+  padding   : 7px 17px;
+
+  &:focus,
+  &:hover {
+    color     : $white;
+    background: $sidebar-color;
+  }
 }
