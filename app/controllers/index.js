@@ -3,15 +3,20 @@ import ElectronMixin from '../mixins/electron'
 export default Ember.Controller.extend(ElectronMixin, {
   application: Ember.inject.controller('application'),
   path: '',
+  isFileSelected: false,
   success: true,
   cleaning: false,
   buildTypes: [],
-  isPathEmpty: Ember.computed('path', function() {
-    return this.get('path') === '';
+  pathChanged: Ember.observer('path', function() {
+    if (this.get('path') === '') {
+      this.set('isFileSelected', false);
+    } else {
+      this.set('isFileSelected', true);
+    }
   }),
   actions: {
     open() {
-      if (this.get('isPathEmpty')) {
+      if (!this.get('isFileSelected')) {
         this.get('dialog').showOpenDialog({
           properties: ['openDirectory']
         }, (paths) => {
@@ -22,7 +27,7 @@ export default Ember.Controller.extend(ElectronMixin, {
             //
             this.execute('./gradlew tasks', params, (error, stdout, stderr) => {
               this.parseTask(stdout);
-              this.set('path', '');
+              this.set('isFileSelected', false);
             })
           }
         });

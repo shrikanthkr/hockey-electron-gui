@@ -10,13 +10,13 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        {{#if isPathEmpty}}
-          <button class='btn btn-primary btn-block' {{action "open"}}>
-            <i class="icon-folder-open"></i> Select Project
-          </button>
-        {{else}}
+        {{#if isFileSelected}}
           <button class='btn btn-primary btn-block disabled' {{action "open"}}>
             <i class="icon-folder-open"></i> Processing...
+          </button>
+        {{else}}
+          <button class='btn btn-primary btn-block' {{action "open"}}>
+            <i class="icon-folder-open"></i> Select Project
           </button>
         {{/if}}
       </div>
@@ -31,7 +31,7 @@
         {{/if}}
       </div>
     </div>
-    {{#if path}}
+    {{#if isFileSelected}}
       <div class="row">
         <div class="col-sm-12">
           <div class="loader">
@@ -62,7 +62,7 @@
     </div>
   </div>
   <div class='status-bar'>
-    {{#if path}}
+    {{#if isFileSelected}}
       Selected {{path}} {{else if stdout}}
       <span class='{{if success "success" "error"}}'>{{stdout}}</span>
     {{else}}
