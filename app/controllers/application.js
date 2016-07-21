@@ -16,9 +16,11 @@ export default Ember.Controller.extend({
 				tokens.forEach((token, index) => {
 					if(token.get('rights') == 0){
 						this.set('token',token.get('token'));
+						this.setupAjax();
 						window.localStorage.setItem('auth_token',  token.get('token'));
 						isTokenAvailable = true;
 						resolve(user);
+						return;
 					}
 				});
 				if(!isTokenAvailable){

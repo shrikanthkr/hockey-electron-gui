@@ -3,7 +3,13 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
 	beforeModel(){
-			this.set('user', this.controllerFor('application').get('currentUser'));
+			let user = this.controllerFor('application').get('currentUser');
+			if(user){
+				this.set('user', user);
+			}else{
+				this.transitionTo('/');
+			}
+			
 	},
 	model() {
 		return this.get('user').getApps();
@@ -17,12 +23,13 @@ export default Ember.Route.extend({
 				users.forEach((user, item) => {
 					console.log(user.get('email'));
 					user.deleteRecord();
-					user.save();
+					user.save().then(()=>{
+						this.transitionTo('/');
+					});
 					window.localStorage.clear()
 					this.controllerFor('application').setupAjax();
 				});
 			});
-			this.transitionTo('/');
 		}
 	}
 });
