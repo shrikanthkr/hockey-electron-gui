@@ -31,15 +31,6 @@
         {{/if}}
       </div>
     </div>
-    {{#if isFileSelected}}
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="loader">
-            <i class="icon-spin1 animate-spin"></i>
-          </div>
-        </div>
-      </div>
-    {{/if}}
   </div>
 </div>
 <div class="col-sm-9 right-relative">
@@ -52,13 +43,23 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      {{#each buildTypes as |type|}}
-        <div class='small-4 medium-4 large-4 columns'>
-          {{build-type type=type path=path is_interrupted=is_interrupted}}
+      {{#if isFileSelected}}
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="file-loader" class="loader">
+              <i class="icon-spin1 animate-spin"></i> Loading...
+            </div>
+          </div>
         </div>
-        {{else}}
-          <h3>No Built types found</h3>
-      {{/each}}
+      {{else}}
+        {{#each buildTypes as |type|}}
+          <div class="col-sm-6">
+            {{build-type type=type path=path is_interrupted=is_interrupted}}
+          </div>
+      {{else}}
+        <h4 class="message">No Built types found</h4>
+        {{/each}}
+      {{/if}}
     </div>
   </div>
   <div class='status-bar'>

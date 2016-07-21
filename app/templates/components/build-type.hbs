@@ -2,17 +2,21 @@
 <h3>{{type.name}}</h3>
 
 {{#if is_loading}}
-<button class='disabled button' >Building...</button>
+	<button class='disabled button'>Building...</button>
 {{else}}
 	{{#if success}}
 		{{image-uploader url=staticUrl }}
 	{{else}}
-		<button class='success button'  {{action "build"}}>Build</button>
+		<button class='btn btn-success' {{action "build"}}>
+			<i class="icon-wrench"></i> Build
+		</button>
 	{{/if}}
 {{/if}}
 
-<div class='{{if error "error" "success"}} console-output'>{{stdOut}}</div>
- <hr>
- <div class='{{if error "error" "success"}} console-output'>{{stdErr}}</div>
- <hr>
-  <div class='{{if error "error" "success"}} console-output'>{{stdEnd}}</div>
+{{#if (console stdOut stdErr stdEnd)}}
+	<div class="console-output">
+		<span class='{{if error "error" "success"}}'>{{stdOut}}</span>
+		<span class='{{if error "error" "success"}}'>{{stdErr}}</span>
+		<span class='{{if error "error" "success"}}'>{{stdEnd}}</span>
+	</div>
+{{/if}}

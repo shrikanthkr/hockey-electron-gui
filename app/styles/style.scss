@@ -111,7 +111,7 @@ input {
 
   .btn {
     background: transparent;
-    padding   : 10px 25px;
+    padding   : 12px 25px;
     margin-top: 20px;
   }
 
@@ -134,6 +134,11 @@ input {
   right     : 0;
   height    : 100%;
   background: $white;
+
+  .message {
+    @extend .text-center;
+    margin-top: 35%;
+  }
 }
 
 .profile {
@@ -161,9 +166,12 @@ i.form-control-feedback {
 
 .loader {
   @extend .text-center;
-  font-size : $font-medium;
-  color     : $primaryblue;
-  margin-top: 20px;
+  font-size: $font-medium;
+  color    : $black;
+}
+
+#file-loader {
+  margin-top: 35%;
 }
 
 .status-bar {
@@ -173,6 +181,19 @@ i.form-control-feedback {
   width     : 100%;
   padding   : 5px;
   background: $status-bar-color;
+}
+
+.console-output {
+  background: $black;
+  margin-top: 20px;
+  padding   : 20px;
+  font-size : $font-small;
+  max-height: 500px;
+  overflow-y: scroll;
+
+  .success {
+    color: $consolegreen;
+  }
 }
 
 #logout {
