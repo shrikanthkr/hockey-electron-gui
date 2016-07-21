@@ -16,6 +16,7 @@ export default Ember.Controller.extend(ElectronMixin, {
   }),
   actions: {
     open() {
+      this.set('path', '');
       if (!this.get('isFileSelected')) {
         this.get('dialog').showOpenDialog({
           properties: ['openDirectory']
@@ -24,6 +25,7 @@ export default Ember.Controller.extend(ElectronMixin, {
             this.set('path', paths[0]);
             let params = {};
             params.cwd = this.get('path');
+            this.set('buildTypes', []);
             //
             this.execute('./gradlew tasks', params, (error, stdout, stderr) => {
               this.parseTask(stdout);
