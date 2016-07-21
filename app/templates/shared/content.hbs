@@ -1,0 +1,38 @@
+<div class="col-sm-9 right-relative">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        {{render 'shared/navbar'}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      {{#if isFileSelected}}
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="file-loader" class="loader">
+              <i class="icon-spin1 animate-spin"></i> Loading...
+            </div>
+          </div>
+        </div>
+      {{else}}
+        {{#each buildTypes as |type|}}
+          <div class="col-sm-6">
+            {{build-type type=type path=path is_interrupted=is_interrupted}}
+          </div>
+      {{else}}
+        <h4 class="message">No Built types found</h4>
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+  <div class='status-bar'>
+    {{#if isFileSelected}}
+      Selected {{path}} {{else if stdout}}
+      <span class='{{if success "success" "error"}}'>{{stdout}}</span>
+    {{else}}
+      Ready. Bring it on!
+    {{/if}}
+  </div>
+</div>
