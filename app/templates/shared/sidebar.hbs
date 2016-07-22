@@ -30,4 +30,9 @@
       {{/if}}
     </div>
   </div>
+  <div class="row">
+    {{#each  user.apps as |app index| }}
+      <h3 style='color: white'>{{app.title}}</h3>
+    {{/each}}
+  </div>
 </div>

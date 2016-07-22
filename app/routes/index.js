@@ -12,10 +12,26 @@ export default Ember.Route.extend({
 
   },
   model() {
-    return this.get('user').getApps();
+    let user = this.get('user');
+    user.getApps().then((data) => {
+        data.apps.forEach((item, index) => {
+          let app  = this.store.createRecord('app');
+          app.setProperties({
+            id: item.id,
+            title: item.title,
+            platform: item.platform,
+            company: item.company,
+            role: item.role});
+          user.get('apps').pushObject(app);
+        });
+        user.get('apps').invoke('save');
+        return;
+    });
   },
+
   setupController(controller, model) {
     controller.set('user', this.get('user'));
+
   },
   actions: {
     logout() {
