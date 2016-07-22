@@ -39,8 +39,6 @@ export default Ember.Component.extend(ElectronMixin, {
         this.set('error', !(code === 0));
         this.set('is_loading', false);
       });
-
-    },
-
+    }
   }
 });
