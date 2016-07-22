@@ -196,6 +196,23 @@ i.form-control-feedback {
   }
 }
 
+ul.em-tab-list {
+  border      : none !important;
+  padding-left: 0;
+
+  li {
+    border       : none;
+    border-radius: $border-radius;
+    margin-right : 15px;
+    padding      : 7px 30px;
+  }
+
+  li[active="true"] {
+    background: $primaryblue;
+    color     : $white;
+  }
+}
+
 #logout {
   border    : 1px solid #404040;
   color     : #505050;

@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-10 col-sm-offset-1">
       {{#if isFileSelected}}
         <div class="row">
           <div class="col-sm-12">
@@ -26,11 +26,13 @@
                 {{/em-tab}}
               {{/each}}
             {{/em-tab-list}}
-            {{#each buildTypes as |type|}}
-              {{#em-tab-panel}}
-                {{build-type type=type path=path is_interrupted=is_interrupted}}
-              {{/em-tab-panel}}
-            {{/each}}
+            <div class="well">
+              {{#each buildTypes as |type|}}
+                {{#em-tab-panel}}
+                  {{build-type type=type path=path is_interrupted=is_interrupted}}
+                {{/em-tab-panel}}
+              {{/each}}
+            </div>
           {{/em-tabs}}
         {{else}}
           <h4 class="message">No Built types found.</h4>
