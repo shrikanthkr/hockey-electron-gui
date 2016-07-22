@@ -46,6 +46,7 @@
     "ember-data": "^2.6.0",
     "ember-electron": "1.6.0",
     "ember-export-application-global": "^1.0.5",
+    "ember-idx-tabs": "^0.1.4",
     "ember-inspector": "1.10.0",
     "ember-load-initializers": "^0.5.1",
     "ember-localstorage-adapter": "1.0.0-rc.1",

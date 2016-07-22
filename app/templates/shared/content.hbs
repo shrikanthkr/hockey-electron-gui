@@ -17,13 +17,24 @@
           </div>
         </div>
       {{else}}
-        {{#each buildTypes as |type|}}
-          <div class="col-sm-6">
-            {{build-type type=type path=path is_interrupted=is_interrupted}}
-          </div>
-      {{else}}
-        <h4 class="message">No Built types found</h4>
-        {{/each}}
+        {{#if buildTypes}}
+          {{#em-tabs }}
+            {{#em-tab-list}}
+              {{#each buildTypes as |type|}}
+                {{#em-tab}}
+                  {{type.name}}
+                {{/em-tab}}
+              {{/each}}
+            {{/em-tab-list}}
+            {{#each buildTypes as |type|}}
+              {{#em-tab-panel}}
+                {{build-type type=type path=path is_interrupted=is_interrupted}}
+              {{/em-tab-panel}}
+            {{/each}}
+          {{/em-tabs}}
+        {{else}}
+          <h4 class="message">No Built types found.</h4>
+        {{/if}}
       {{/if}}
     </div>
   </div>
