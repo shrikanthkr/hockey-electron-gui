@@ -32,6 +32,7 @@
   </div>
   <div class="row">
     {{#each  user.apps as |app index| }}
+      {{#link-to 'apps.app' app}} First Photo Ever {{/link-to}}
       <h3 style='color: white'>{{app.title}}</h3>
     {{/each}}
   </div>
