@@ -7,5 +7,6 @@ export default Model.extend({
 	title: attr(),
 	platform: attr(),
 	company: attr(),
-	role: attr()
+	role: attr(),
+	folder: attr()
 });

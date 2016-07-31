@@ -13,7 +13,9 @@ export default Ember.Route.extend({
   model() {
     let user = this.get('user');
     return user.getApps().then((data) => {
-        data.apps.forEach((item, index) => {
+      data.apps.forEach((item, index) => {
+        let localApp = this.store.findRecord('app', item.id);
+        localApp.then((record) => {
           let app  = this.store.createRecord('app');
           app.setProperties({
             id: item.id,
@@ -21,10 +23,11 @@ export default Ember.Route.extend({
             platform: item.platform,
             company: item.company,
             role: item.role});
-          user.get('apps').pushObject(app);
-        });
-        user.get('apps').invoke('save');
-        return user;
+            user.get('apps').pushObject(app);
+        })
+      });
+      user.get('apps').invoke('save');
+      return user;
     });
   },
 
