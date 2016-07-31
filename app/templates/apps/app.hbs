@@ -1,0 +1,67 @@
+<h1>{{model.title}}</h1>
+
+<div class="row">
+  <div class="col-sm-12">
+    {{#if model.folder}}
+      <button class='btn btn-primary btn-block disabled' {{action 'open'}}>
+        <i class="icon-folder-open"></i> Edit
+      </button>
+    {{else}}
+      <button class='btn btn-primary btn-block' {{action 'open'}}>
+        <i class="icon-folder-open"></i> Select Project
+      </button>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    {{#if cleaning}}
+      <div class='button disabled'>Cleaning...</div>
+    {{else}}
+      <a class='btn btn-primary btn-block' {{action 'clean'}}>
+        <i class="icon-ccw"></i> Clean</a>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      {{#if isFileSelected}}
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="file-loader" class="loader">
+              <i class="icon-spin1 animate-spin"></i> Loading...
+            </div>
+          </div>
+        </div>
+      {{else}}
+        {{#if buildTypes}}
+          {{#em-tabs }}
+            {{#em-tab-list}}
+              {{#each buildTypes as |type|}}
+                {{#em-tab}}
+                  {{type.name}}
+                {{/em-tab}}
+              {{/each}}
+            {{/em-tab-list}}
+            <div class="well">
+              {{#each buildTypes as |type|}}
+                {{#em-tab-panel}}
+                  {{build-type type=type path=model.folder is_interrupted=is_interrupted}}
+                {{/em-tab-panel}}
+              {{/each}}
+            </div>
+          {{/em-tabs}}
+        {{else}}
+          <h4 class="message">No Built types found.</h4>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+  <div class='status-bar'>
+    {{#if model.folder}}
+      Selected {{model.folder}} {{else if stdout}}
+      <span class='{{if success "success" "error"}}'>{{stdout}}</span>
+    {{else}}
+      Ready. Bring it on!
+    {{/if}}
+  </div>

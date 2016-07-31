@@ -7,10 +7,7 @@ export default Ember.Route.extend({
 			let user = users.get('firstObject');
 			if(user){
 				this.controllerFor('application').set('currentUser', user);
-				this.transitionTo('/index');
-				return;
-			}else{
-				this.transitionTo('/');
+				this.transitionTo('apps');
 				return;
 			}
 		});

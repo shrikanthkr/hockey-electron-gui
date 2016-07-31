@@ -1,33 +1,38 @@
-<div class="col-sm-3 left-fixed">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="profile">
-        {{gravatar-image class='avatar' email=user.email hash=mode.gravatar_hash title=user.name}}
-        <h4 id="name">{{user.name}}</h4>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      {{#if isFileSelected}}
-        <button class='btn btn-primary btn-block disabled' {{action "open"}}>
-          <i class="icon-folder-open"></i> Processing...
-        </button>
-      {{else}}
-        <button class='btn btn-primary btn-block' {{action "open"}}>
-          <i class="icon-folder-open"></i> Select Project
-        </button>
-      {{/if}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      {{#if cleaning}}
-        <div class='button disabled'>Cleaning...</div>
-      {{else}}
-        <a class='btn btn-primary btn-block' {{action "clean"}}>
-          <i class="icon-ccw"></i> Clean</a>
-      {{/if}}
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="profile">
+      {{gravatar-image class='avatar' email=user.email hash=mode.gravatar_hash title=user.name}}
+      <h4 id="name">{{user.name}}</h4>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-12">
+    {{#if isFileSelected}}
+      <button class='btn btn-primary btn-block disabled' {{action attrs.open}}>
+        <i class="icon-folder-open"></i> Processing...
+      </button>
+    {{else}}
+      <button class='btn btn-primary btn-block' {{action attrs.open}}>
+        <i class="icon-folder-open"></i> Select Project
+      </button>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    {{#if cleaning}}
+      <div class='button disabled'>Cleaning...</div>
+    {{else}}
+      <a class='btn btn-primary btn-block' {{action attrs.clean}}>
+        <i class="icon-ccw"></i> Clean</a>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  {{#each  user.apps as |app index| }}
+    {{#link-to 'apps.app' app.id}}<h3 style='color: white'>{{app.title}}</h3>{{/link-to}}
+  {{/each}}
+</div>
+
