@@ -15,7 +15,6 @@ export default Ember.Controller.extend(ElectronMixin, {
 	actions: {
 		open() {
 			let app  = this.get('model');	
-			app.set('folder', '');
 			this.get('dialog').showOpenDialog({
 				properties: ['openDirectory']
 			}, (paths) => {
@@ -49,8 +48,12 @@ export default Ember.Controller.extend(ElectronMixin, {
 		params.cwd = app.get('folder');
 		this.set('buildTypes', []);
 		this.execute('./gradlew tasks', params, (error, stdout, stderr) => {
-			this.parseTask(stdout);
-			this.get('model').save();
+			if(stderr){
+
+			}else{
+				this.parseTask(stdout);
+				this.get('model').save();
+			}
 		})
 	},
 	parseTask(tasks) {

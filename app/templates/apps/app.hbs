@@ -46,7 +46,7 @@
             <div class="well">
               {{#each buildTypes as |type|}}
                 {{#em-tab-panel}}
-                  {{build-type type=type path=path is_interrupted=is_interrupted}}
+                  {{build-type type=type path=model.folder is_interrupted=is_interrupted}}
                 {{/em-tab-panel}}
               {{/each}}
             </div>
@@ -58,8 +58,8 @@
     </div>
   </div>
   <div class='status-bar'>
-    {{#if isFileSelected}}
-      Selected {{path}} {{else if stdout}}
+    {{#if model.folder}}
+      Selected {{model.folder}} {{else if stdout}}
       <span class='{{if success "success" "error"}}'>{{stdout}}</span>
     {{else}}
       Ready. Bring it on!
