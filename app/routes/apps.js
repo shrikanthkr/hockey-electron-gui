@@ -12,7 +12,7 @@ export default Ember.Route.extend({
   },
   model() {
     let user = this.get('user');
-    user.getApps().then((data) => {
+    return user.getApps().then((data) => {
         data.apps.forEach((item, index) => {
           let app  = this.store.createRecord('app');
           app.setProperties({
@@ -24,12 +24,12 @@ export default Ember.Route.extend({
           user.get('apps').pushObject(app);
         });
         user.get('apps').invoke('save');
-        return;
+        return user;
     });
   },
 
   setupController(controller, model) {
-    controller.set('user', this.get('user'));
+    controller.set('user',model);
 
   },
   actions: {
